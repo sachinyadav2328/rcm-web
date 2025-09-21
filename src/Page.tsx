@@ -1,4 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card"
 import { Building2, Shield, Truck, Users, Mail, MapPin, Star } from "lucide-react"
 
 export default function RCMMetalsPage() {
