@@ -1,7 +1,16 @@
+import { useRef } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card"
 import { Building2, Shield, Truck, Users, Mail, MapPin, Star } from "lucide-react"
 
 export default function RCMMetalsPage() {
+
+  const aboutRef = useRef<HTMLDivElement>(null)
+  const servicesRef = useRef<HTMLDivElement>(null)
+  const testimonialsRef = useRef<HTMLDivElement>(null)
+
+  const scrollTo = (ref: React.RefObject<HTMLElement | null>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" })
+  }
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -15,15 +24,25 @@ export default function RCMMetalsPage() {
             </div>
           </div>
           <nav className="hidden md:flex space-x-6">
-            <a href="#about" className="hover:text-amber-300 transition-colors">
+          <button
+              onClick={() => scrollTo(aboutRef)}
+              className="hover:text-amber-300 transition-colors"
+            >
               About
-            </a>
-            <a href="#services" className="hover:text-amber-300 transition-colors">
+            </button>
+
+            <button
+              onClick={() => scrollTo(servicesRef)}
+              className="hover:text-amber-300 transition-colors"
+            >
               Services
-            </a>
-            <a href="#testimonials" className="hover:text-amber-300 transition-colors">
+            </button>
+            <button
+              onClick={() => scrollTo(testimonialsRef)}
+              className="hover:text-amber-300 transition-colors"
+            >
               Testimonials
-            </a>
+            </button>
             {/* <a href="#" className="hover:text-amber-300 transition-colors">
               Contact
             </a> */}
@@ -46,7 +65,7 @@ export default function RCMMetalsPage() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-gray-50">
+      <section ref={aboutRef} id="about" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h3 className="text-4xl font-bold mb-4 text-gray-900">About RCM Metals LLC</h3>
@@ -97,7 +116,7 @@ export default function RCMMetalsPage() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-white">
+      <section ref={servicesRef} id="services" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h3 className="text-4xl font-bold mb-4 text-gray-900">Our Services</h3>
@@ -177,7 +196,7 @@ export default function RCMMetalsPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-gray-50">
+      <section ref={testimonialsRef} id="testimonials" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h3 className="text-4xl font-bold mb-4 text-gray-900">What Our Clients Say</h3>
@@ -287,7 +306,7 @@ export default function RCMMetalsPage() {
           </div>
 
           <div className="border-t border-white/20 mt-8 pt-8 text-center text-sm opacity-80">
-            <p>&copy; 2024 RCM Metals LLC. All rights reserved. | Georgia Metal Trading Company</p>
+            <p>&copy; 2024 RCM Metals LLC. All rights reserved. | Metal Trading Company</p>
           </div>
         </div>
       </footer>
