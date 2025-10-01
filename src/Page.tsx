@@ -1,12 +1,15 @@
 import { useRef } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card"
-import { Building2, Shield, Truck, Users, Mail, MapPin, Star } from "lucide-react"
+import { Shield, Truck, Users, Mail, MapPin } from "lucide-react"
+import logo from './assets/logo.png'
+import crane from './assets/crane-grab-scrap.jpg'
+import copper from './assets/copper.jpeg'
 
 export default function RCMMetalsPage() {
 
   const aboutRef = useRef<HTMLDivElement>(null)
   const servicesRef = useRef<HTMLDivElement>(null)
-  const testimonialsRef = useRef<HTMLDivElement>(null)
+  const contactRef = useRef<HTMLDivElement>(null)
 
   const scrollTo = (ref: React.RefObject<HTMLElement | null>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" })
@@ -14,10 +17,10 @@ export default function RCMMetalsPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-cyan-600 text-white shadow-lg">
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-gray-200 text-gray-900">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Building2 className="h-8 w-8" />
+            <img src={logo} alt="Logo" className="h-10 w-10" />
             <div>
               <h1 className="text-xl font-bold">RCM Metals LLC</h1>
               <p className="text-sm opacity-90">Metal Trading Company</p>
@@ -38,20 +41,24 @@ export default function RCMMetalsPage() {
               Services
             </button>
             <button
-              onClick={() => scrollTo(testimonialsRef)}
+              onClick={() => scrollTo(contactRef)}
               className="hover:text-amber-300 transition-colors"
             >
-              Testimonials
-            </button>
-            {/* <a href="#" className="hover:text-amber-300 transition-colors">
               Contact
-            </a> */}
+            </button>
           </nav>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-cyan-600 to-cyan-500 text-white py-24">
+      <section className="relative  text-white py-24">
+        {/* Animated background image layer */}
+        <div
+          className="absolute inset-0 bg-center bg-cover 
+          "
+          style={{ backgroundImage: `url(${crane})` }}
+        ></div>
+        {/* Overlay for readability */}
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
@@ -125,140 +132,122 @@ export default function RCMMetalsPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="border-l-4 border-l-amber-500 bg-white border border-gray-200 shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-amber-600">Steel Trading</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base text-gray-600">
-                  Complete steel trading services including structural steel, rebar, and specialty alloys.
-                </CardDescription>
-              </CardContent>
-            </Card>
+          {/* Ferrous Scrap Section */}
+          <div className="mb-16">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="order-2 lg:order-1">
+                <div className="relative h-96 rounded-lg overflow-hidden shadow-lg">
+                  <div
+                    className="absolute inset-0 bg-center bg-cover bg-gray-800"
+                    style={{ backgroundImage: `url(${crane})` }}
+                  ></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-6 left-6 text-white">
+                    <h4 className="text-2xl font-bold mb-2">Ferrous Scrap Processing</h4>
+                    <p className="text-sm opacity-90">Heavy-duty equipment for iron and steel scrap</p>
+                  </div>
+                </div>
+              </div>
+              <div className="order-1 lg:order-2">
+                <h4 className="text-3xl font-bold text-gray-900 mb-6">Ferrous Scrap</h4>
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                  We specialize in the collection, processing, and trading of ferrous metals including iron and steel scrap. 
+                  Our advanced processing facilities ensure maximum value recovery from your ferrous materials.
+                </p>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h5 className="font-semibold text-gray-900">Steel Scrap Processing</h5>
+                      <p className="text-gray-600">Structural steel, rebar, and industrial steel components</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h5 className="font-semibold text-gray-900">Iron Scrap Collection</h5>
+                      <p className="text-gray-600">Cast iron, wrought iron, and automotive scrap</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h5 className="font-semibold text-gray-900">Industrial Demolition</h5>
+                      <p className="text-gray-600">Large-scale ferrous metal recovery from demolition projects</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-            <Card className="border-l-4 border-l-amber-500 bg-white border border-gray-200 shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-amber-600">Aluminum Solutions</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base text-gray-600">
-                  High-quality aluminum products for construction, manufacturing, and industrial applications.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="border-l-4 border-l-amber-500 bg-white border border-gray-200 shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-amber-600">Copper & Brass</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base text-gray-600">
-                  Premium copper and brass materials for electrical, plumbing, and decorative uses.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="border-l-4 border-l-amber-500 bg-white border border-gray-200 shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-amber-600">Scrap Metal Processing</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base text-gray-600">
-                  Efficient scrap metal collection, processing, and recycling services.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="border-l-4 border-l-amber-500 bg-white border border-gray-200 shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-amber-600">Custom Fabrication</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base text-gray-600">
-                  Tailored metal fabrication services to meet specific project requirements.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="border-l-4 border-l-amber-500 bg-white border border-gray-200 shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-amber-600">Market Analysis</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base text-gray-600">
-                  Expert market insights and pricing analysis to optimize your metal procurement strategy.
-                </CardDescription>
-              </CardContent>
-            </Card>
+          {/* Non-Ferrous Metals Section */}
+          <div>
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h4 className="text-3xl font-bold text-gray-900 mb-6">Non-Ferrous Metals</h4>
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                  Our non-ferrous metal trading division handles precious and specialty metals including aluminum, 
+                  copper, brass, and other valuable materials with specialized processing capabilities.
+                </p>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-cyan-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h5 className="font-semibold text-gray-900">Aluminum Solutions</h5>
+                      <p className="text-gray-600">High-grade aluminum alloys for construction and manufacturing</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-cyan-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h5 className="font-semibold text-gray-900">Copper & Brass</h5>
+                      <p className="text-gray-600">Premium copper and brass materials for electrical applications</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-cyan-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h5 className="font-semibold text-gray-900">Precious Metals</h5>
+                      <p className="text-gray-600">Specialized handling of precious and rare earth metals</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-cyan-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h5 className="font-semibold text-gray-900">Custom Alloys</h5>
+                      <p className="text-gray-600">Specialized alloy trading and custom material sourcing</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div className="relative h-96 rounded-lg overflow-hidden shadow-lg">
+                  <div
+                    className="absolute inset-0 bg-center bg-cover bg-gray-800"
+                    style={{ backgroundImage: `url(${copper})` }}
+                  ></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-6 left-6 text-white">
+                    <h4 className="text-2xl font-bold mb-2">Non-Ferrous Excellence</h4>
+                    <p className="text-sm opacity-90">Premium metals for advanced applications</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section ref={testimonialsRef} id="testimonials" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold mb-4 text-gray-900">What Our Clients Say</h3>
-            <p className="text-xl text-gray-600">Trusted by businesses across Georgia and beyond</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="bg-white border border-gray-200 shadow-sm">
-              <CardContent className="pt-6">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-amber-500 text-amber-500" />
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-4">
-                  "RCM Metals has been our go-to partner for steel procurement. Their reliability and competitive
-                  pricing have been instrumental to our project success."
-                </p>
-                {/* <div className="font-semibold text-cyan-600">- Sarah Johnson, Construction Manager</div> */}
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white border border-gray-200 shadow-sm">
-              <CardContent className="pt-6">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-amber-500 text-amber-500" />
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-4">
-                  "Exceptional service and expertise. RCM Metals consistently delivers quality materials on time and
-                  within budget."
-                </p>
-                {/* <div className="font-semibold text-cyan-600">- Michael Chen, Manufacturing Director</div> */}
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white border border-gray-200 shadow-sm">
-              <CardContent className="pt-6">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-amber-500 text-amber-500" />
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-4">
-                  "Their market knowledge and personalized approach have helped us optimize our metal procurement
-                  strategy significantly."
-                </p>
-                {/* <div className="font-semibold text-cyan-600">- David Rodriguez, Procurement Specialist</div> */}
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer ref={contactRef} className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <Building2 className="h-6 w-6" />
+                <img src={logo} alt="Logo" className="h-6 w-6" />
                 <span className="text-lg font-bold">RCM Metals LLC</span>
               </div>
               <p className="text-sm opacity-80 text-pretty">
