@@ -39,7 +39,7 @@ function saturate(color: RGB, amount = 0.1): RGB {
 export async function applyBrandColorsFromImage(imageSrc: string): Promise<void> {
   if (typeof window === 'undefined' || !('document' in window)) return
 
-  await new Promise<void>((resolve, reject) => {
+  await new Promise<void>((resolve) => {
     const img = new Image()
     img.crossOrigin = 'anonymous'
     img.onload = () => {
